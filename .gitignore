@@ -10,3 +10,5 @@ sdg/build/
 sdg/sdg.egg-info/
 
 sdg/waterverse_sdg.egg-info/
+
+.idea/
