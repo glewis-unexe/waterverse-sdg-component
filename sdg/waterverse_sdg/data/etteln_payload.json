@@ -1,0 +1,121 @@
+{
+    "properties": [
+      {"name": "Last72Hour",
+        "type": "lookup",
+        "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":65},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":200},
+              {"name":"extreme", "value":100}
+          ]
+      },
+
+      {"name": "Last24Hour",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":40},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":100},
+              {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Last12Hour",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":40},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":0},
+              {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Last4Hour",
+        "type": "lookup",
+          "range":[
+            {"name":"no-rain", "value":0},
+            {"name":"high-tail", "value":20},
+            {"name":"forecast-short", "value":0},
+            {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Last2Hour",
+        "type": "lookup",
+        "range":[
+            {"name":"no-rain", "value":0},
+            {"name":"high-tail", "value":20},
+            {"name":"forecast-short", "value":0},
+            {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+        ]
+      },
+      {"name": "LastHour",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":0},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+
+      {"name": "Forecast2Hour",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":0},
+              {"name":"forecast-short", "value":50},
+              {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Forecast0To24",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":0},
+              {"name":"forecast-short", "value":50},
+              {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Forecast24To48",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":0},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "Forecast48To72",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value":0},
+              {"name":"high-tail", "value":300},
+              {"name":"forecast-short", "value":0},
+              {"name":"historic", "value":0},
+            {"name":"extreme", "value":100}
+          ]
+      },
+      {"name": "TrafficLights",
+        "type": "lookup",
+          "range":[
+              {"name":"no-rain", "value": {"current":  "green", "nowcast": "green", "forecast": "green"} },
+              {"name":"high-tail", "value":{"current":  "amber", "nowcast": "amber", "forecast": "red"}},
+              {"name":"forecast-short", "value":{"current":  "green", "nowcast": "red", "forecast": "amber"}},
+              {"name":"historic", "value":{"current":  "red", "nowcast": "amber", "forecast": "green"}},
+              {"name":"extreme", "value":{"current":  "red", "nowcast": "red", "forecast": "red"}}
+          ]
+      }
+    ],
+
+    "step": 3600,
+    "current_state": {
+        "mode": "no-rain"
+    }
+}

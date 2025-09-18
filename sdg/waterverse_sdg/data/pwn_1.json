@@ -1,0 +1,47 @@
+
+{"properties":
+  [
+      {"name": "qOlst",
+          "range":[
+              {"name":"low", "range":[100,333]},
+              {"name":"med", "range":[334,666]},
+              {"name":"high", "range":[667,999]}
+          ],
+          "type": "lookup",
+          "delta_limit": 0.1,
+          "output-name":"urn:ngsi-ld:DeviceMeasurement:NL-RWS-2-LMW_AFVOER-Olst-OLST"
+          },
+      {"name":"clLobith",
+      "steps":[
+              [  50 , 136.0],
+              [ 100 , 119.0],
+              [ 150 , 132.0],
+              [ 200 , 116.0],
+              [ 250 , 111.0],
+              [ 300 , 108.0],
+              [ 350 ,  95.0],
+              [ 400 ,  95.0],
+              [ 450 ,  89.0],
+              [ 500 ,  82.0],
+              [ 550 ,  74.0],
+              [ 600 ,  73.0],
+              [ 650 ,  66.0],
+              [ 700 ,  62.0],
+              [ 750 ,  61.0],
+              [ 800 ,  46.0],
+              [ 850 ,  47.0],
+              [ 900 ,  44.0],
+              [ 950 ,  35.0],
+              [1000 ,  42.0]
+          ],
+          "input": "qOlst",
+          "type": "calculation",
+          "output-name":"urn:ngsi-ld:DeviceMeasurement:NL-RWS-2-LMW_ZOUT-Lobith-LOBH"
+      }
+  ],
+
+  "order": ["qOlst", "clLobith"],
+  "step": 86400,
+  "current_state" : {"qOlst":"low"}
+}
+

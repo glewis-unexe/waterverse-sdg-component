@@ -1,0 +1,12 @@
+
+wdme_sdg_component/__pycache__/
+
+wdme_sdg_component/.idea/
+
+sdg/.idea/
+
+sdg/build/
+
+sdg/sdg.egg-info/
+
+sdg/waterverse_sdg.egg-info/
