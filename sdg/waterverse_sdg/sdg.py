@@ -319,7 +319,7 @@ def get_data(pilot:str, sensor:str, count:int) -> list:
                 timestamp = fiware_to_datetime(pilot_model[pilot][sensor]['timestamp'])
 
                 attrib_results = {}
-                if 'order' in pilot_model[pilot][sensor]['config']:
+                if 'order' in pilot_model[pilot][sensor]['config'] and pilot_model[pilot][sensor]['config'] != None:
                     for attrib in pilot_model[pilot][sensor]['config']['order']:
 
                         attrib_results[attrib] = process_attrib(timestamp, pilot_model[pilot][sensor]['config'], attrib, attrib_results)

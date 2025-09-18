@@ -1,28 +1,18 @@
-import datetime
-import os
-import json
-
 import unexecore.debug
 import waterverse_sdg.sdg as sdg
 
 from pydantic import BaseModel
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 
 
-from fastapi import FastAPI, Response, Request
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.responses import FileResponse
+
 
 origins = [
     "http://localhost",
     "http://localhost:63342",
 ]
-
-
-from fastapi.staticfiles import StaticFiles
-
-
-from starlette.requests import Request
 
 
 app = FastAPI()
@@ -39,11 +29,12 @@ app.add_middleware(
 class CurrentState(BaseModel):
     current_state:Dict[str, str]
 
-class SensorDefiniton(BaseModel):
-    properties:List[Dict[str, str]]
+class SensorDefiniton(CurrentState):
+    properties:List[Dict[str, Any]]
     step: int
-    current_state: Dict[str, str]
-    reference_data: Dict[str, List[Dict[str,Any]]]
+    reference_data: Optional[Dict[str, List[Dict[str,Any]]]] = None
+    order: Optional[List[str]] = None
+
 
 @app.post("/sdg/add_sensor_to_pilot")
 def add_sensor_to_pilot(pilot:str, sensor:str, payload:SensorDefiniton, response: Response):
@@ -51,6 +42,13 @@ def add_sensor_to_pilot(pilot:str, sensor:str, payload:SensorDefiniton, response
     try:
         sdg.add_pilot(pilot)
         data = payload.model_dump()
+
+        if data['order'] == None:
+            data.pop('order')
+
+        if data['reference_data'] == None:
+            data.pop('reference_data')
+
         if sdg.add_sensor_to_pilot(pilot, sensor,data):
             response.status_code = 201
         else:
